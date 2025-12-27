@@ -1,14 +1,15 @@
-import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
-
+import 'package:chat/helpers/mostrar_alerta.dart';
+import 'package:chat/services/auth_service.dart';
 import 'package:chat/widgets/boton_azul.dart';
 import 'package:chat/widgets/custom_input.dart';
-import 'package:chat/widgets/logo.dart';
 import 'package:chat/widgets/login_labels.dart';
-import 'package:chat/services/auth_service.dart';
-import 'package:chat/helpers/mostrar_alerta.dart';
+import 'package:chat/widgets/logo.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class RegisterPage extends StatelessWidget {
+class Login2Page extends StatelessWidget {
+  const Login2Page({super.key});
+
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context);
@@ -24,26 +25,37 @@ class RegisterPage extends StatelessWidget {
                   physics: BouncingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
+                      // Esta es la clave: La altura mínima es la altura disponible total
                       minHeight: constraints.maxHeight,
                     ),
                     child: IntrinsicHeight(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          // Bloque Superior (Logo + Form)
                           Column(
                             children: [
-                              Logo(titulo: 'Registro'),
+                              Logo(titulo: 'Messenger'),
                               _Form(),
                             ],
                           ),
+
+                          // Bloque Inferior (Labels + Términos)
                           Column(
                             children: [
                               Labels(
-                                ruta: 'login3',
-                                pregunta: 'Ya tienes cuenta?',
-                                sugerencia: 'Ingresa con tu cuenta ahora!',
+                                ruta: 'register',
+                                pregunta: 'No tienes cuenta?',
+                                sugerencia: 'Crea una ahora!',
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 10), // Un pequeño respiro
+                              Text(
+                                '3 Términos y condiciones de uso',
+                                style: TextStyle(fontWeight: FontWeight.w200),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ), // Margen para que no pegue con el borde
                             ],
                           ),
                         ],
@@ -67,7 +79,6 @@ class _Form extends StatefulWidget {
 }
 
 class __FormState extends State<_Form> {
-  final nameCtrl = TextEditingController();
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
 
@@ -81,13 +92,6 @@ class __FormState extends State<_Form> {
       child: Column(
         children: [
           CustomInput(
-            icon: Icons.perm_identity,
-            placeholder: 'Nombre',
-            keyboardType: TextInputType.text,
-            textController: nameCtrl,
-          ),
-
-          CustomInput(
             icon: Icons.mail_outline,
             placeholder: 'Correo',
             keyboardType: TextInputType.emailAddress,
@@ -100,29 +104,28 @@ class __FormState extends State<_Form> {
             textController: passCtrl,
             isPassword: true,
           ),
-          //CustomInput(),
-          //CustomInput(),
-          //TextField(),
           BotonAzul(
-            text: 'Registrarse',
-            onPressed: authService.autenticando ? null : () async {
-              FocusScope.of(context).unfocus();
-              final registerOk = await authService.register(
-                nameCtrl.text.trim(),
-                emailCtrl.text.trim(),
-                passCtrl.text.trim(),
-              );
+            text: 'Ingrese',
+            onPressed: authService.autenticando
+                ? null
+                : () async {
+                    FocusScope.of(context).unfocus();
+                    final loginOk = await authService.login(
+                      emailCtrl.text.trim(),
+                      passCtrl.text.trim(),
+                    );
 
-              if (registerOk == true) {
-                Navigator.pushReplacementNamed(context, 'usuarios');
-              } else {
-                mostrarAlerta(
-                  context,
-                  'Registro incorrecto',
-                  registerOk
-                );
-              }
-            },
+                    if (loginOk) {
+                      Navigator.pushReplacementNamed(context, 'usuarios');
+                    } else {
+                      //Mostrar una alerta si algo salió mal
+                      mostrarAlerta(
+                        context, 
+                        'Login incorrecto',
+                        'Revise sus credenciales nuevamente'
+                      );
+                    }
+                  },
           ),
         ],
       ),
@@ -138,6 +141,7 @@ class _LoadingOverlay extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
+      //Color oscuto semitransparente para dar foco al spinner
       color: Colors.black26,
       child: const Center(
         child: CircularProgressIndicator(
