@@ -1,4 +1,5 @@
 import 'package:chat/pages/chat_page.dart';
+import 'package:chat/pages/home_page.dart';
 import 'package:chat/pages/loading2_page.dart';
 import 'package:chat/pages/loading3_page.dart';
 import 'package:chat/pages/loading4_page.dart';
@@ -23,4 +24,5 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'loading4': ( _ ) => Loading4Page(),
   'ordenes' : ( _ ) => OrdenesPage(),
   'ordenes2': ( _ ) => Ordenes2Page(),
+  'home'    : ( _ ) => HomePage(),
 };

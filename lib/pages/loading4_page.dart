@@ -23,7 +23,7 @@ class _Loading4PageState extends State<Loading4Page> {
     if (!mounted) return;
 
     if (isLoggedIn) {
-      Navigator.pushNamedAndRemoveUntil(context, 'ordenes2', (route) => false);
+      Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
     } else {
       Navigator.pushNamedAndRemoveUntil(context, 'login2', (route) => false);
     }
