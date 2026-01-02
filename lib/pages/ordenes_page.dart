@@ -38,7 +38,7 @@ class _OrdenesPageState extends State<OrdenesPage> {
 
     final response = await ordenesService.paginarOrdenes(_currentPage);
     setState(() {
-      _ordenes.addAll(response.data);
+      _ordenes.addAll(response.ordenes);
       _currentPage++;
       _hasMore = _currentPage <= response.totalPages;
       _isLoading = false;

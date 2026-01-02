@@ -15,7 +15,7 @@ class OrdenesService with ChangeNotifier {
       final token = await AuthService.getToken();
 
       final uri = Uri.parse(
-        '${Environment.apiUrl}/ordenes/movil',
+        '${Environment.apiUrl}/ordenes',
       ).replace(queryParameters: parameters);
 
       final resp = await http.get(
@@ -30,9 +30,10 @@ class OrdenesService with ChangeNotifier {
         //final jsonBody = json.decode(resp.body);
         return paginadoOrdenesResponseFromJson(resp.body);
       } else {
+        print(resp);
         throw Exception('Error al obtener las órdenes: ${resp.statusCode}');
       }
-    } catch (e) {    
+    } catch (e) {
       throw Exception('Error en paginarOrdenes: $e');
     }
   }

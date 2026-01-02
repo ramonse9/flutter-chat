@@ -116,7 +116,7 @@ class __FormState extends State<_Form> {
                     );
 
                     if (loginOk) {
-                      Navigator.pushReplacementNamed(context, 'usuarios');
+                      Navigator.pushReplacementNamed(context, 'ordenes2');
                     } else {
                       //Mostrar una alerta si algo salió mal
                       mostrarAlerta(

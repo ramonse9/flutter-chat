@@ -50,7 +50,7 @@ class _Ordenes2PageState extends State<Ordenes2Page> {
       if (!mounted) return;
 
       setState(() {
-        _ordenes.addAll(response.data);
+        _ordenes.addAll(response.ordenes);
         _currentPage++;
         _hasNextPage = response.hasNextPage;
         _isLoading = false;

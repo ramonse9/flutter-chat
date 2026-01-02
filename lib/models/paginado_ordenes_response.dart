@@ -16,7 +16,7 @@ class PaginadoOrdenesResponse {
     int totalItems;
     int totalPages;
     bool hasNextPage;
-    List<Orden> data;
+    List<Orden> ordenes;
 
     PaginadoOrdenesResponse({
         required this.page,
@@ -24,7 +24,7 @@ class PaginadoOrdenesResponse {
         required this.totalItems,
         required this.totalPages,
         required this.hasNextPage,
-        required this.data,
+        required this.ordenes,
     });
 
     factory PaginadoOrdenesResponse.fromJson(Map<String, dynamic> json) => PaginadoOrdenesResponse(
@@ -33,7 +33,7 @@ class PaginadoOrdenesResponse {
         totalItems: json["totalItems"],
         totalPages: json["totalPages"],
         hasNextPage: json["hasNextPage"],
-        data: List<Orden>.from(json["data"].map((x) => Orden.fromJson(x))),
+        ordenes: List<Orden>.from(json["ordenes"].map((x) => Orden.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -42,6 +42,6 @@ class PaginadoOrdenesResponse {
         "totalItems": totalItems,
         "totalPages": totalPages,
         "hasNextPage": hasNextPage,
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+        "ordenes": List<dynamic>.from(ordenes.map((x) => x.toJson())),
     };
 }
