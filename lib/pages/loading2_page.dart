@@ -21,8 +21,7 @@ class _Loading2PageState extends State<Loading2Page> {
     _isLoggedIn = Provider.of<AuthService>(context, listen: false).isLoggedIn();
   }
 
-  Widget build(BuildContext context) {    
-
+  Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder<bool>(
         future: _isLoggedIn,
@@ -30,15 +29,16 @@ class _Loading2PageState extends State<Loading2Page> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: const Text('Cargando... Loading 2'));
           }
-      
+
           if (snapshot.hasError) {
             return Center(child: Text('Ocurrió un error inesperado'));
           }
-      
+
           if (snapshot.hasData && snapshot.data == true) {
-            return UsuariosPage();
+            Navigator.pushNamedAndRemoveUntil(context, 'usuarios', (route) => false);
+            //return UsuariosPage();
           }
-      
+
           return Login2Page();
         },
       ),

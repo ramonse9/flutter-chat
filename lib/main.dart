@@ -1,3 +1,4 @@
+import 'package:chat/services/ordenes_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,12 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ( _ ) => AuthService())
+        ChangeNotifierProvider(create: ( _ ) => AuthService()),
+        ChangeNotifierProvider(create: ( _ ) => OrdenesService() )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Chat App',
-        initialRoute: 'loading2',
+        initialRoute: 'loading4',
         routes: appRoutes
       ),
     );
