@@ -1,4 +1,5 @@
 import 'package:chat/services/ordenes_service.dart';
+import 'package:chat/services/vin_scanner_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: ( _ ) => AuthService()),
-        ChangeNotifierProvider(create: ( _ ) => OrdenesService() )
+        ChangeNotifierProvider(create: ( _ ) => OrdenesService() ),
+        ChangeNotifierProvider(create: ( _ ) => VinScannerService())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
