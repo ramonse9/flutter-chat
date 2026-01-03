@@ -5,8 +5,8 @@ class PerfilPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Center( child: Text('PerfilPage'))
+    return const Scaffold(
+      body: Center( child: Text('PerfilPage'))
     );
   }
 }

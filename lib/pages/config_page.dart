@@ -5,8 +5,8 @@ class ConfigPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Center(child: Text('ConfigPage'),),
+    return const Scaffold(
+      body: Center(child: Text('ConfigPage'),),
     );
   }
 }

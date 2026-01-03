@@ -1,4 +1,5 @@
 import 'package:chat/pages/config_page.dart';
+import 'package:chat/pages/escanear_vin_page.dart';
 import 'package:chat/pages/ordenes_2_page.dart';
 import 'package:chat/pages/perfil_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _screens = [
     const Ordenes2Page(),
+    const EscanearVinPage(),
     const PerfilPage(),
     const ConfigPage(),
   ];
@@ -36,6 +38,7 @@ class _HomePageState extends State<HomePage> {
         index: _currentIndex,
         items: const <Widget>[
           Icon(Icons.list, size: 30, color: Colors.black),
+          Icon(Icons.search, size: 30, color: Colors.black),
           Icon(Icons.person, size: 30, color: Colors.black),
           Icon(Icons.settings, size: 30, color: Colors.black)
         ],

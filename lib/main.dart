@@ -5,6 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:chat/services/auth_service.dart';
 import 'package:chat/routes/routes.dart';
 
+import 'services/auth_service.dart';
+import 'services/ordenes_service.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
