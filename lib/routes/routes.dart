@@ -1,4 +1,5 @@
 import 'package:chat/pages/chat_page.dart';
+import 'package:chat/pages/escanear_vin_page.dart';
 import 'package:chat/pages/home_page.dart';
 import 'package:chat/pages/loading2_page.dart';
 import 'package:chat/pages/loading3_page.dart';
@@ -25,4 +26,5 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'ordenes' : ( _ ) => OrdenesPage(),
   'ordenes2': ( _ ) => Ordenes2Page(),
   'home'    : ( _ ) => HomePage(),
+  'escanear' : ( _ ) => EscanearVinPage(),
 };
