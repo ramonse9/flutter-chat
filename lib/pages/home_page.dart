@@ -1,6 +1,7 @@
 import 'package:chat/pages/config_page.dart';
 import 'package:chat/pages/escanear_vin_page.dart';
 import 'package:chat/pages/ordenes_3_page.dart';
+import 'package:chat/pages/ordenes_4_page.dart';
 import 'package:chat/pages/perfil_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   bool _isInitialized = false;
 
   final List<Widget> _screens = [
-    const Ordenes3Page(),
+    const Ordenes4Page(),
     const EscanearVinPage(),
     const PerfilPage(),
     const ConfigPage(),

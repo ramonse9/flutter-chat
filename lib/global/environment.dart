@@ -11,7 +11,7 @@ class Environment {
   //static String socketUrl = Platform.isAndroid ? 'http://192.168.100.46:3000' : 'http://localhost:3000';
 
   //movil con wifi
-  static String ipAddress = '192.168.100.67';
+  static String ipAddress = '192.168.100.62';
   static String apiUrl =    'http://$ipAddress:3000/api';
   static String socketUrl = 'http://$ipAddress:3000';
 

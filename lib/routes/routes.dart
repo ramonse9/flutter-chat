@@ -9,6 +9,7 @@ import 'package:chat/pages/login2_page.dart';
 import 'package:chat/pages/login_page.dart';
 import 'package:chat/pages/ordenes_2_page.dart';
 import 'package:chat/pages/ordenes_3_page.dart';
+import 'package:chat/pages/ordenes_4_page.dart';
 import 'package:chat/pages/ordenes_page.dart';
 import 'package:chat/pages/register_page.dart';
 import 'package:chat/pages/usuarios_page.dart';
@@ -27,6 +28,7 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'ordenes' : ( _ ) => OrdenesPage(),
   'ordenes2': ( _ ) => Ordenes2Page(),
   'ordenes3': ( _ ) => Ordenes3Page(),
+  'ordenes4': ( _ ) => Ordenes4Page(),
   'home'    : ( _ ) => HomePage(),
   'escanear' : ( _ ) => EscanearVinPage(),
 };
