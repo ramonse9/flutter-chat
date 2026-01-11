@@ -104,6 +104,7 @@ class _Ordenes4PageState extends State<Ordenes4Page> {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       elevation: 3,
+      clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -209,14 +210,70 @@ class _Ordenes4PageState extends State<Ordenes4Page> {
               ),
               const SizedBox(height: 8),
               // Fila 4: Fechas con icono
-              Text(
-                "Ingreso ${_formatDates(orden.fechaIngreso.toString())}",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[600],
-                )
+              Row(
+                children: [
+                  Icon(
+                    Icons.calendar_today,
+                    color: Colors.grey[600],
+                    size: 16
+                  ),
+                  SizedBox( width: 8),
+                  Text(
+                    "Ingreso ${_formatDates(orden.fechaIngreso.toString())}",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey[600],
+                    )
+                  ),
+                ]
               ),
-            ]
+              //Si tiene factura, mostral total
+              if( orden.facturas.isNotEmpty )
+                Column(
+                  children: [
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.attach_money,
+                          color: Colors.green[600],
+                          size: 16
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          "Total: \$${orden.facturas[0].total}",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green[700]
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              const SizedBox(height: 8),
+              //Fila 5: Indicator de nota (si existe)
+              if(orden.notas.isNotEmpty)
+                Row(
+                  children: [
+                    Icon(
+                      Icons.note,
+                      color: Colors.amber[600],
+                      size: 16
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      "Tiene ${orden.notas.length} nota(s)",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.amber[700]
+                      )
+                    )
+
+                  ]
+                )
+            ],
           ),
         )
       ),
