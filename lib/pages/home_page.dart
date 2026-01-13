@@ -1,7 +1,11 @@
 import 'package:chat/pages/config_page.dart';
 import 'package:chat/pages/escanear_vin_page.dart';
+import 'package:chat/pages/ordenes_10_page.dart';
+import 'package:chat/pages/ordenes_11_page.dart';
 import 'package:chat/pages/ordenes_3_page.dart';
 import 'package:chat/pages/ordenes_4_page.dart';
+import 'package:chat/pages/ordenes_5_page.dart';
+import 'package:chat/pages/ordenes_6_page.dart';
 import 'package:chat/pages/perfil_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +22,12 @@ class _HomePageState extends State<HomePage> {
   bool _isInitialized = false;
 
   final List<Widget> _screens = [
-    const Ordenes4Page(),
-    const EscanearVinPage(),
-    const PerfilPage(),
-    const ConfigPage(),
+    const Ordenes6Page(),
+    const Ordenes5Page(),
+    const Ordenes11Page(),
+    const Ordenes3Page(),
+    const Ordenes10Page(),
+    //const EscanearVinPage(),    
   ];
 
   @override
@@ -54,9 +60,10 @@ class _HomePageState extends State<HomePage> {
           index: _currentIndex,
           items: const <Widget>[
             Icon(Icons.list, size: 30, color: Colors.black),
-            Icon(Icons.search, size: 30, color: Colors.black),
             Icon(Icons.person, size: 30, color: Colors.black),
-            Icon(Icons.settings, size: 30, color: Colors.black)
+            Icon(Icons.settings, size: 30, color: Colors.black),
+            Icon(Icons.list, size: 30, color: Colors.black),
+            Icon(Icons.search, size: 30, color: Colors.black),
           ],
           onTap: (index){
             setState( () {
